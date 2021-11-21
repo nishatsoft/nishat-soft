@@ -14,4 +14,18 @@ order allow,deny
 allow from all
 </Files>
 
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “alt-php72” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-alt-php72 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+deny from 67.205.168.109
+deny from 157.245.97.94
+deny from 206.189.52.64
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^nishatsoft\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.nishatsoft\.com$
+RewriteRule ^/?$ "https\:\/\/nishatsoft\.com\/" [R=301,L]
 
